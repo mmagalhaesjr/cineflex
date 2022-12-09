@@ -5,20 +5,27 @@ import Sessao from "./components/Sessao";
 import Filmes from "./components/Filmes";
 import Sucesso from "./components/Sucesso";
 import GlobalStyle from "./GlobalStyle"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 
 
 export default function App() {
   return (
     <>
-    <GlobalStyle/>
+      <GlobalStyle />
       <StyledApp>
-        <div className="header">
-          <h1>CINEFLEX</h1>
-        </div>
-        <Filmes/>
-        {/* <Sessao/> */}
-        {/* <Assento/> */}
-        {/* <Sucesso /> */}
+      <div className="header">
+            <h1>CINEFLEX</h1>
+          </div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Filmes />} />
+            <Route path="/sessoes/:idFilme" element={<Sessao />} /> 
+            <Route path="/assentos/:idSessao" element={<Assento/>} />
+            <Route path="/sucesso" element={<Sucesso/>} />
+          </Routes>
+        </BrowserRouter>
       </StyledApp>
     </>
 

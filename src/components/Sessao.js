@@ -1,14 +1,14 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import styled from "styled-components"
 
 export default function Sessao() {
-
+    const { idFilme } = useParams()
     const [sessao, setSessao] = useState([])
-    console.log(sessao)
 
     useEffect(() => {
-        const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies/1/showtimes"
+        const URL = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`
         const promise = axios.get(URL)
         promise.then(res => setSessao(res.data))
         promise.catch(err => console.log(err.response.data))
@@ -31,8 +31,10 @@ export default function Sessao() {
             </section>
 
             <footer>
+              <div>
                 <img src={sessao.posterURL} alt="" />
-                <p>{sessao.title} </p>
+                <p>{sessao.title} </p></div>
+                
             </footer>
         </StyledSelecaoHorario>
     )
@@ -76,14 +78,21 @@ h2{
   }
 
   footer{
-    display: flex;
     font-size: 26px;
     width: 100%;
     height: 117px;
-    align-items: center;
+    display: flex;
     justify-content: center;
     background-color: #9EADBA;
 
+    div{
+      display: flex;
+    width: 375px;
+    height: 117px;
+    align-items: center;
+    justify-content: left;
+    background-color: #9EADBA;
+    }
     img{
         width: 48px;
         height: 72px;

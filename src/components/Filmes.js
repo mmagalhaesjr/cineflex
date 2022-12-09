@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export default function Filmes() {
@@ -21,9 +22,11 @@ export default function Filmes() {
         <StyledSelecaoFilmes>
             <h2>Selecione o filme</h2>
             {filmes.map(filme => (
-                <cartaz key={filme.id}>
+                <Link  key={filme.id} to= {`/sessoes/${filme.id}`}>
+                <cartaz>
                     <img src={filme.posterURL} alt={filme.title} />
                 </cartaz>
+                </Link>  
             ))}
         </StyledSelecaoFilmes>
     )
@@ -34,9 +37,6 @@ const StyledSelecaoFilmes = styled.div`
     justify-content:space-around;
     flex-wrap:wrap;
    
-   
-    
-
 cartaz{
     width:145px;
     height: 209px;
