@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
 
 export default function Sessao() {
@@ -25,7 +25,13 @@ export default function Sessao() {
                 {sessao.days.map(select => (
                     <div key={select.id}>
                         <p>{select.weekday} - {select.date}</p>
-                        {select.showtimes.map(horarios => (<button>{horarios.name}</button>))}
+                        {select.showtimes.map(horario => (
+                        
+                        <Link to={`/assentos/${horario.id}`}>
+                         <button>{horario.name}</button>
+                        </Link>
+                        
+                        ))}
                     </div>
                 ))}
             </section>
