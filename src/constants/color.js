@@ -1,0 +1,10 @@
+export const BRANCO = '#E5E5E5'//fundo
+export const CINZA ='#C3CFD9';// header-assentos livres
+export const CINZAESCURO ='#808F9D';//Borda dos assentos livres
+export const LARANJA ='#E8833A';// Botoes
+export const AZUL = '#293845'//titulo
+export const VERDE = '#1AAE9E';//assentos selecionados
+export const VERDEESCURO = '#0E7D71';//Borda dos selecionados
+export const VERDE3 = '#247A6B'; // texto de conclusão
+export const AMARELO = '#FBE192';//assentos ocupados
+export const AMARELOESCURO = '#F7C52B';//Borda dosassentos ocupados
