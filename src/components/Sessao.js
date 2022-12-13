@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
 
+
 export default function Sessao() {
     const { idFilme } = useParams()
     const [sessao, setSessao] = useState([])
@@ -15,20 +16,22 @@ export default function Sessao() {
     }, [])
 
     if (sessao.length === 0) {
-        return <p>CAREGANDO...</p>
+        return <p>CAREGANDO... </p>
     }
+
+
 
     return (
         <StyledSelecaoHorario>
             <h2>Selecione o Horário</h2>
             <section>
                 {sessao.days.map(select => (
-                    <div key={select.id}>
+                    <div data-test="movie-day" key={select.id}>
                         <p>{select.weekday} - {select.date}</p>
                         {select.showtimes.map(horario => (
                         
-                        <Link to={`/assentos/${horario.id}`}>
-                         <button>{horario.name}</button>
+                        <Link key={horario.id} to={`/assentos/${horario.id}`}>
+                         <button data-test="showtime">{horario.name}</button>
                         </Link>
                         
                         ))}
@@ -37,7 +40,7 @@ export default function Sessao() {
             </section>
 
             <footer>
-              <div>
+              <div data-test="footer">
                 <img src={sessao.posterURL} alt="" />
                 <p>{sessao.title} </p></div>
                 

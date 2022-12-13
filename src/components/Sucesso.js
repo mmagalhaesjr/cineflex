@@ -1,27 +1,30 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
-export default function Sucesso() {
 
+
+export default function Sucesso({ids,setIds,name, setName, cpf,setCPF,dataFilme,setDataFilme,horaFilme,setHoraFilme,nomeFilme,setNomeFilme, numeroAssento}) {
+console.log(numeroAssento)
     return (
         <StyledSucesso>
             <h2>Pedido feito com sucesso!</h2>
-            <div>
+            <div data-test="movie-info">
                 <h3>Filme e sessão</h3>
-                <p>Enola Homes</p>
-                <p> 24/10/2021 15:00</p>
+                <p>{nomeFilme}</p>
+                <p> {dataFilme} {horaFilme}</p>
             </div>
-            <div>
+            <div data-test="seats-info">
                 <h3>Ingressos</h3>
-                <p>Assento 15</p>
-                <p>Assento 16</p>
+                {numeroAssento.map(numero => <p>Assento {numero}</p> )}
             </div>
-            <div>
+            <div data-test="client-info">
                 <h3>Comprador</h3>
-                <p>Nome: João da Silva Sauro</p>
-                <p>CPF: 123.456.789-10</p>
+                <p>Nome: {name}</p>
+                <p>CPF: {cpf}</p>
             </div>
-            <button>
-                Voltar pra Home
-            </button>
+            <Link to="/">
+            <button data-test="go-home-btn">Voltar pra Home</button>
+            </Link>
+            
         </StyledSucesso>
     )
 }

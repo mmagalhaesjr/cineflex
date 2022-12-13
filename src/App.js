@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Assento from "./components/Assento";
 import Sessao from "./components/Sessao";
 import Filmes from "./components/Filmes";
 import Sucesso from "./components/Sucesso";
 import GlobalStyle from "./GlobalStyle"
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 
 
 export default function App() {
+
+    const [ids, setIds] = useState([])
+    const [name, setName] = useState("")
+    const [cpf, setCPF] = useState("")
+    const [nomeFilme, setNomeFilme] = useState("")
+    const [dataFilme, setDataFilme]= useState("")
+    const [horaFilme, setHoraFilme]= useState("")
+    const [numeroAssento, setNumeroAssento]= useState("")
+  
   return (
     <>
       <GlobalStyle />
@@ -22,8 +32,39 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Filmes />} />
             <Route path="/sessoes/:idFilme" element={<Sessao />} /> 
-            <Route path="/assentos/:idSessao" element={<Assento/>} />
-            <Route path="/sucesso" element={<Sucesso/>} />
+            <Route path="/assentos/:idSessao" element={<Assento 
+            ids={ids}
+            setIds={setIds}
+            name={name}
+            setName={setName}
+            cpf={cpf}
+            setCPF={setCPF}
+            numeroAssento={numeroAssento}
+            setNumeroAssento={setNumeroAssento}
+            nomeFilme={nomeFilme}
+            setNomeFilme={setNomeFilme}
+            dataFime={dataFilme}
+            setDataFilme={setDataFilme}
+            horafilme={horaFilme}
+            setHoraFilme={setHoraFilme}
+            />} />
+
+
+            <Route path="/sucesso" element={<Sucesso
+            ids={ids}
+            setIds={setIds}
+            name={name}
+            setName={setName}
+            cpf={cpf}
+            setCPF={setCPF}
+            nomeFilme={nomeFilme}
+            setNomeFilme={setNomeFilme}
+            dataFilme={dataFilme}
+            setDataFilme={setDataFilme}
+            horaFilme={horaFilme}
+            setHoraFilme={setHoraFilme}
+            numeroAssento={numeroAssento}
+            />} />
           </Routes>
         </BrowserRouter>
       </StyledApp>

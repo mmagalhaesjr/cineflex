@@ -23,9 +23,9 @@ export default function Filmes() {
             <h2>Selecione o filme</h2>
             {filmes.map(filme => (
                 <Link  key={filme.id} to= {`/sessoes/${filme.id}`}>
-                <cartaz>
+                <div data-test="movie" className="cartaz">
                     <img src={filme.posterURL} alt={filme.title} />
-                </cartaz>
+                </div>
                 </Link>  
             ))}
         </StyledSelecaoFilmes>
@@ -37,7 +37,7 @@ const StyledSelecaoFilmes = styled.div`
     justify-content:space-around;
     flex-wrap:wrap;
    
-cartaz{
+.cartaz{
     width:145px;
     height: 209px;
     background-color:#ffffff;
